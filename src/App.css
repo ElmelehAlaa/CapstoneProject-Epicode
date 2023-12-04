@@ -180,6 +180,9 @@ nav {
   font-weight: 700;
 }
 
+#logoCol {
+  overflow: hidden;
+}
 #logoImg {
   transform: translateX(-250%);
   transition: transform 2s ease-in-out;
@@ -199,4 +202,8 @@ nav {
 }
 .hServizi {
   font-size: 45px;
+}
+.imgMembers {
+  border-radius: 100px;
+  margin: 10px;
 }

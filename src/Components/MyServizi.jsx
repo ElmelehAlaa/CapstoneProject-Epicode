@@ -39,7 +39,7 @@ const MyServizi = () => {
           <Col xs={"4"}>
             <Link to={"/ProPlayer"}>
               <CustomCard
-                backcolor="blue"
+                backcolor="cornflowerblue"
                 title="PRO PLAYER"
                 imageUrl="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2023/09/25/14b27e82-ca06-42a7-b7d7-d97fa6481447_b9028916.jpg"
                 description="un Pro player è un giocatore professionista ed è un vero e proprio atleta il quale viene pagato per giocare"
