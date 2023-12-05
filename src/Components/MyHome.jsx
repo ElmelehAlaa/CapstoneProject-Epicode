@@ -34,9 +34,9 @@ const MyHome = () => {
           </Col>
         </Row>
         <Row className="mt-5">
-          <Col xs={"5"}>
+          <Col xs={"5"} style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h4 className=" mt-5 me-5 hHome">Chi siamo:</h4>
-            <p className=" pHome">
+            <p className="pHome">
               Siamo un gruppo di coach esperti nel mondo degli esports con oltre 10 anni di esperienza. La nostra
               passione e competenza ci guidano nell'offrire servizi di alta qualità, Condividiamo il nostro know-how per
               aiutare ogni individuo a raggiungere il massimo del suo potenziale nel competitivo universo degli esports.
@@ -44,9 +44,9 @@ const MyHome = () => {
           </Col>
         </Row>
         <Row>
-          <Col xs={"6"} className="offset-6">
+          <Col xs={"6"} className="offset-6" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h4 className=" mt-5 me-5 hHome">La nostra missione</h4>
-            <p className=" pHome">
+            <p className="pHome">
               La nostra missione è trasformare gli appassionati di videogiochi in veri e propri atleti. Ci impegniamo a
               fornire servizi di coaching e crescita personalizzati nel mondo degli esports, guidandoti verso il tuo
               massimo potenziale.
@@ -57,9 +57,9 @@ const MyHome = () => {
           </Col>
         </Row>
         <Row className="mt-5">
-          <Col xs={"5"}>
+          <Col xs={"5"} style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
             <h4 className=" mt-5 me-5 hHome">i Nostri traguardi:</h4>
-            <p className=" pHome">
+            <p className="pHome">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem reprehenderit, quos distinctio
               dignissimos, asperiores nesciunt itaque impedit dolorum cupiditate, quam sint. Quasi dolor sunt libero
               provident praesentium alias repudiandae maxime?
@@ -72,12 +72,6 @@ const MyHome = () => {
           </Col>
           <Col xs={"6"} className="offset-3">
             <div>
-              <img
-                className="imgMembers"
-                width={150}
-                src="https://storage.googleapis.com/studio-cms-assets/projects/BVqXwApQOR/s-400x400_webp_de30c1a6-dfed-43c5-b15d-e8750968972c.webp"
-                alt="foto-member"
-              ></img>
               <img
                 className="imgMembers"
                 width={150}

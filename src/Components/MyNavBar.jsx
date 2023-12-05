@@ -17,18 +17,19 @@ const MyNavbar = () => {
       <nav style={{ height: "50px" }}>
         <Link to={"/"}>
           <div className="text-white fs-6">
-            logo
-            {/* <img
-            style={{ width: "50px" }}
-            src="https://pbs.twimg.com/profile_images/1373938004121772033/KTR6AKRf_400x400.jpg"
-            alt=""
-          /> */}
+            {
+              <img
+                style={{ width: "50px" }}
+                src="https://1000logos.net/wp-content/uploads/2021/04/Fnatic-logo.png"
+                alt=""
+              />
+            }
           </div>
         </Link>
         <div>
           <ul id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
             <li>
-              <div className="active">About Us</div>
+              <div className="active">Home</div>
             </li>
             <li>
               <div>News</div>
