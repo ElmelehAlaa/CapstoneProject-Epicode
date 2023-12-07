@@ -6,6 +6,8 @@ import ProPlayerPage from "./Components/ProPlayerPage";
 import AmatorialePage from "./Components/AmatorialePage";
 import MyServizi from "./Components/MyServizi";
 import MyHome from "./Components/MyHome";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <BrowserRouter>
         <MyNavBar />
         <Routes>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/login" element={<Login />}></Route>
           <Route path="" element={<MyHome />} />
           <Route path="/Servizi" element={<MyServizi />} />
           <Route path="/ProPlayer" element={<ProPlayerPage />} />

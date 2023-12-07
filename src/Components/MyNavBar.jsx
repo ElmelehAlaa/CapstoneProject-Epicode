@@ -6,12 +6,12 @@ const MyNavbar = () => {
   const handleClick = () => {
     setClicked(!clicked);
   };
-  const scrollIntoView = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // const scrollIntoView = (sectionId) => {
+  //   const element = document.getElementById(sectionId);
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
   return (
     <>
       <nav style={{ height: "50px" }}>
@@ -35,7 +35,11 @@ const MyNavbar = () => {
               <div>News</div>
             </li>
             <li>
-              <div onClick={() => scrollIntoView("membriSection")}>Membri</div>
+              <div
+              //  onClick={() => scrollIntoView("membriSection")}
+              >
+                Membri
+              </div>
             </li>
             <li>
               <Link to={"/servizi"}>

@@ -3,13 +3,19 @@ import persistStore from "redux-persist/es/persistStore";
 import storage from "redux-persist/lib/storage";
 import loadingReducer from "../reducers/loadingReducer";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import tokenReducer from "../reducers/token";
+import registrazioneReducer from "../reducers/registrazione";
+import membersReducer from "../reducers/members";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["query", "jobs", "favorites", "follow"],
+  whitelist: [],
 };
 const rootReducer = combineReducers({
   loading: loadingReducer,
+  token: tokenReducer,
+  registrazione: registrazioneReducer,
+  members: membersReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

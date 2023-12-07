@@ -47,7 +47,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #282c34;
+  background-color: #6495ed;
   padding: 20px 80px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
@@ -65,7 +65,7 @@ nav {
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: 600;
-  color: white;
+  color: #ffffff;
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -196,6 +196,7 @@ nav {
 }
 .hHome {
   font-size: 45px;
+  color: orange;
 }
 .pServizi {
   font-size: 30px;
@@ -206,4 +207,110 @@ nav {
 .imgMembers {
   border-radius: 100px;
   margin: 10px;
+}
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.form-container h2 {
+  color: cornflowerblue;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container label {
+  margin-bottom: 8px;
+  color: cornflowerblue;
+}
+
+.login-container input {
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+}
+
+.login-container button {
+  background-color: orange;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-container button:hover {
+  background-color: darkorange;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+form h2 {
+  color: orange;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  color: orange;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid orange;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: cornflowerblue;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+form button:hover {
+  background-color: royalblue;
+}
+h2,
+h4 {
+  color: orange;
+}
+a,
+p,
+li {
+  color: #6495ed;
+}
+button {
+  background-color: orange;
+  color: #ffffff;
+}
+button:hover {
+  background-color: darkorange;
+}
+.hServizi {
+  color: white;
 }
