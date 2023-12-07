@@ -6,6 +6,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import tokenReducer from "../reducers/token";
 import registrazioneReducer from "../reducers/registrazione";
 import membersReducer from "../reducers/members";
+import myProfileReducer from "../reducers/myProfile";
+import myLoginReducer from "../reducers/loginEmail";
 const persistConfig = {
   key: "root",
   storage,
@@ -16,6 +18,8 @@ const rootReducer = combineReducers({
   token: tokenReducer,
   registrazione: registrazioneReducer,
   members: membersReducer,
+  profile: myProfileReducer,
+  login: myLoginReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 
 const MyNavbar = () => {
   const [clicked, setClicked] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const handleClick = () => {
     setClicked(!clicked);
+  };
+  const handleProfileClick = () => {
+    setShowProfileDropdown(!showProfileDropdown);
   };
   // const scrollIntoView = (sectionId) => {
   //   const element = document.getElementById(sectionId);
@@ -45,6 +49,26 @@ const MyNavbar = () => {
               <Link to={"/servizi"}>
                 <div>Servizi</div>
               </Link>
+            </li>
+            <li className="ms-5">
+              <img
+                onClick={handleProfileClick}
+                style={{
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                }}
+                src="http://ui-avatars.com/api/?name=Raven+Rolfson"
+                alt="Profile"
+              />
+              {showProfileDropdown && (
+                <div style={{ backgroundColor: "orange" }} id="profileDropdown" className="dropdown-content">
+                  <Link to={"/myprofile"}>
+                    {" "}
+                    <div style={{ fontSize: "15px" }}>Visualizza profilo</div>
+                  </Link>
+                </div>
+              )}
             </li>
           </ul>
         </div>

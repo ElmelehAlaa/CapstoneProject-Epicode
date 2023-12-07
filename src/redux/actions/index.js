@@ -2,6 +2,9 @@ export const LOADING = "LOADING";
 export const TOKEN = "TOKEN";
 export const REGISTRAZIONE_OK = "REGISTRAZIONE_OK";
 export const GET_MEMBERS = "GET_MEMBERS";
+export const MY_PROFILE = "MY_PROFILE";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const LOGIN = "LOGIN";
 const baseEndPoint = "http://localhost:3001";
 
 export const RegisterProfile = (data) => {
@@ -45,6 +48,7 @@ export const LoginProfile = (data) => {
       });
 
       if (resp.ok) {
+        dispatch({ type: LOGIN, payload: data });
         const token = await resp.json();
         dispatch({ type: TOKEN, payload: token.accessToken });
         localStorage.setItem("token", token.accessToken);
@@ -78,6 +82,28 @@ export const fetchMembers = () => {
         console.log("Unauthorized");
       } else {
         console.error("Errore durante la richiesta:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Errore durante la richiesta:", error);
+    }
+  };
+};
+
+export const fetchMyProfile = (email) => {
+  return async (dispatch) => {
+    try {
+      const resp = await fetch(`http://localhost:3001/users/search?email=${email}`, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      });
+      if (resp.ok) {
+        const fetchedMyProfile = await resp.json();
+        dispatch({ typeof: MY_PROFILE, payload: fetchedMyProfile });
+      } else {
+        console.error("Errore durante la richiesta:", resp.statusText);
       }
     } catch (error) {
       console.error("Errore durante la richiesta:", error);
