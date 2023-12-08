@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMyProfile, updateMyProfile } from "../redux/actions";
+import { updateMyProfile } from "../redux/actions";
 import { Col, Container, Row } from "react-bootstrap";
 
 const MyProfile = () => {
@@ -29,11 +29,14 @@ const MyProfile = () => {
   };
 
   const handleUpdateProfile = () => {
+    console.log(localData);
+    console.log(myData);
     dispatch(updateMyProfile(localData, myData));
   };
 
   useEffect(() => {
     setLocalData({ ...myData });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -97,16 +100,18 @@ const MyProfile = () => {
           <div className="input-container">
             <label className="input-label">Tipo di input:</label>
             <select
+              value={localData.input}
               placeholder="input"
-              name="inputType"
-              value={localData.inputType}
-              onChange={(e) => handleDataChange(e, "inputType")}
+              name="input"
+              onChange={(e) => handleDataChange(e, "input")}
               className="input-select"
             >
+              <option>seleziona input</option>
               <option value="MK">MK</option>
               <option value="CONTROLLER">CONTROLLER</option>
             </select>
           </div>
+
           <button onClick={handleUpdateProfile}>Aggiorna Profilo</button>
         </Col>
       </Row>

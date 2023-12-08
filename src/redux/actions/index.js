@@ -121,6 +121,7 @@ export const updateMyProfile = (localData, myData) => {
           username: localData.username,
           nome: localData.nome,
           cognome: localData.cognome,
+          input: localData.input,
         }),
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
