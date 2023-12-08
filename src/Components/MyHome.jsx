@@ -36,7 +36,7 @@ const MyHome = () => {
     dispatch(fetchMembers());
     window.scrollTo({ top: 0, behavior: "smooth" });
     setShowLogo(true);
-    dispatch(fetchMyProfile(myLogin.email));
+    dispatch(fetchMyProfile(myLogin));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

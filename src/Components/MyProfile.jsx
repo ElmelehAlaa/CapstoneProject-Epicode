@@ -4,6 +4,7 @@ import { updateMyProfile } from "../redux/actions";
 import { Col, Container, Row } from "react-bootstrap";
 
 const MyProfile = () => {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const dispatch = useDispatch();
 
   const myData = useSelector((state) => state.profile.myContent);
@@ -47,6 +48,11 @@ const MyProfile = () => {
     console.log(localData);
     console.log(myData);
     dispatch(updateMyProfile(localData, myData));
+    setShowSuccessMessage(true);
+
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -59,6 +65,11 @@ const MyProfile = () => {
       <Row>
         <h1 className="mb-5">Il mio profilo</h1>
         <Col md={"6"}>
+          {showSuccessMessage && (
+            <div className="alert alert-success" role="alert">
+              Profilo aggiornato con successo!
+            </div>
+          )}
           <h4 style={{ color: "orange" }}>premi per modificare la foto</h4>
           <img
             src={myData.urlAvatar}
@@ -69,6 +80,11 @@ const MyProfile = () => {
           <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleFileChange} accept="image/*" />
         </Col>
         <Col md={"6"} className="custom-column">
+          {showSuccessMessage && (
+            <div className="alert alert-success" role="alert">
+              Profilo aggiornato con successo!
+            </div>
+          )}
           <div className="input-container">
             <label className="input-label">Nome utente:</label>
             <input

@@ -19,12 +19,7 @@ const MyNavbar = () => {
     localStorage.removeItem("token");
     dispatch({ type: LOGOUT, payload: myData });
   };
-  // const scrollIntoView = (sectionId) => {
-  //   const element = document.getElementById(sectionId);
-  //   if (element) {
-  //     element.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // };
+
   return (
     <>
       <nav style={{ height: "50px" }}>
@@ -94,16 +89,6 @@ const MyNavbar = () => {
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-
-                    {/* <div style={{ backgroundColor: "orange" }} id="profileDropdown1" className="dropdown-content">
-                        <Link to={"/myprofile"}>
-                          {" "}
-                          <div style={{ fontSize: "15px" }}>Visualizza profilo</div>
-                        </Link>
-                      </div>
-                      <div style={{ backgroundColor: "orange" }} id="profileDropdown2" className="dropdown-content">
-                        <div style={{ fontSize: "15px" }}>logout</div>
-                      </div> */}
                   </>
                 </li>
               </ul>
@@ -115,7 +100,7 @@ const MyNavbar = () => {
         ) : (
           <div>
             <Link to="/login">
-              <div>Login</div>
+              <div className="text-white">Login</div>
             </Link>
           </div>
         )}
