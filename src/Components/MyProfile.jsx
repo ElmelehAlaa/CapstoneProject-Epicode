@@ -21,10 +21,25 @@ const MyProfile = () => {
     document.getElementById("fileInput").click();
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      console.log("File caricato:", file);
+      try {
+        const formData = new FormData();
+        formData.append("image", file);
+
+        const response = await fetch(`http://localhost:3001/users/${myData.id}/image`, {
+          method: "PATCH",
+          body: formData,
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
+
+        return response.json();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

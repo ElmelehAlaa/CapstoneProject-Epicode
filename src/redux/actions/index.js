@@ -5,6 +5,7 @@ export const GET_MEMBERS = "GET_MEMBERS";
 export const MY_PROFILE = "MY_PROFILE";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
 const baseEndPoint = "http://localhost:3001";
 
 export const RegisterProfile = (data) => {

@@ -9,6 +9,7 @@ import MyHome from "./Components/MyHome";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import MyProfile from "./Components/MyProfile";
+import MyMembri from "./Components/MyMembri";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <BrowserRouter>
         <MyNavBar />
         <Routes>
+          <Route path="/membri" element={<MyMembri />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/myprofile" element={<MyProfile />}></Route>

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Dropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { LOGOUT } from "../redux/actions";
 
 const MyNavbar = () => {
+  const dispatch = useDispatch();
   const [clicked, setClicked] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const handleClick = () => {
@@ -13,6 +15,10 @@ const MyNavbar = () => {
     setShowProfileDropdown(!showProfileDropdown);
   };
   const myData = useSelector((state) => state.profile.myContent);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch({ type: LOGOUT, payload: myData });
+  };
   // const scrollIntoView = (sectionId) => {
   //   const element = document.getElementById(sectionId);
   //   if (element) {
@@ -46,7 +52,9 @@ const MyNavbar = () => {
                   <div>News</div>
                 </li>
                 <li>
-                  <div>Membri</div>
+                  <Link to={"/membri"}>
+                    <div>Membri</div>
+                  </Link>
                 </li>
                 <li>
                   <Link to={"/servizi"}>
@@ -78,7 +86,11 @@ const MyNavbar = () => {
                           {" "}
                           <Dropdown.Item href="#/action-1">Modifica profilo</Dropdown.Item>
                         </Link>
-                        <Dropdown.Item href="#/action-2">Logout</Dropdown.Item>
+                        <Link to={"/login"}>
+                          <Dropdown.Item href="#/action-2" onClick={handleLogout}>
+                            Logout
+                          </Dropdown.Item>
+                        </Link>
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
