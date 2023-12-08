@@ -11,7 +11,6 @@ import myLoginReducer from "../reducers/loginEmail";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: [],
 };
 const rootReducer = combineReducers({
   loading: loadingReducer,

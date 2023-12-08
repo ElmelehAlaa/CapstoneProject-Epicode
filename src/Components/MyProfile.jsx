@@ -5,7 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const MyProfile = () => {
   const dispatch = useDispatch();
-  const myLogin = useSelector((state) => state.login.content);
+
   const myData = useSelector((state) => state.profile.myContent);
   const [localData, setLocalData] = useState({ ...myData });
 
@@ -33,7 +33,6 @@ const MyProfile = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchMyProfile(myLogin.email));
     setLocalData({ ...myData });
   }, []);
 
@@ -44,7 +43,7 @@ const MyProfile = () => {
         <Col md={"6"}>
           <h4 style={{ color: "orange" }}>premi per modificare la foto</h4>
           <img
-            src={"http://ui-avatars.com/api/?name=Raven+Rolfson"}
+            src={myData.urlAvatar}
             alt="Avatar"
             style={{ width: "300px", height: "300px", cursor: "pointer" }}
             onClick={handleImageClick}

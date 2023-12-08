@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "./Footer";
-import { fetchMembers } from "../redux/actions";
+import { fetchMembers, fetchMyProfile } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
@@ -27,6 +27,7 @@ const AnimatedSection = ({ children, reverse }) => {
 };
 
 const MyHome = () => {
+  const myLogin = useSelector((state) => state.login.content);
   const dispatch = useDispatch();
   const membersFetched = useSelector((state) => state.members.content);
   const [showLogo, setShowLogo] = useState(false);
@@ -35,7 +36,7 @@ const MyHome = () => {
     dispatch(fetchMembers());
     window.scrollTo({ top: 0, behavior: "smooth" });
     setShowLogo(true);
-
+    dispatch(fetchMyProfile(myLogin.email));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

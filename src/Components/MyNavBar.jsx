@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Dropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -32,7 +33,7 @@ const MyNavbar = () => {
             }
           </div>
         </Link>
-        {myData && myData.length > 0 ? (
+        {myData ? (
           <>
             <div>
               <ul id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
@@ -53,32 +54,45 @@ const MyNavbar = () => {
                   </Link>
                 </li>
                 <li className="ms-5">
-                  <img
-                    onClick={handleProfileClick}
-                    style={{
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "50%",
-                    }}
-                    src={myData.urlAvatar}
-                    alt="Profile"
-                  />
-                  {showProfileDropdown && (
-                    <>
-                      <div style={{ backgroundColor: "orange" }} id="profileDropdown1" className="dropdown-content">
+                  <>
+                    <Dropdown>
+                      <Dropdown.Toggle id="dropdownNavbar">
+                        <img
+                          onClick={handleProfileClick}
+                          style={{
+                            width: "30px",
+                            height: "30px",
+                            borderRadius: "50%",
+                          }}
+                          src={myData.urlAvatar}
+                          alt="Profile"
+                        />
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu
+                        style={{ backgroundColor: "orange" }}
+                        id="profileDropdown1"
+                        className="dropdown-content"
+                      >
+                        <Link to={"/myprofile"}>
+                          {" "}
+                          <Dropdown.Item href="#/action-1">Modifica profilo</Dropdown.Item>
+                        </Link>
+                        <Dropdown.Item href="#/action-2">Logout</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+
+                    {/* <div style={{ backgroundColor: "orange" }} id="profileDropdown1" className="dropdown-content">
                         <Link to={"/myprofile"}>
                           {" "}
                           <div style={{ fontSize: "15px" }}>Visualizza profilo</div>
                         </Link>
                       </div>
                       <div style={{ backgroundColor: "orange" }} id="profileDropdown2" className="dropdown-content">
-                        <Link to={"/myprofile"}>
-                          {" "}
-                          <div style={{ fontSize: "15px" }}>Visualizza profilo</div>
-                        </Link>
-                      </div>
-                    </>
-                  )}
+                        <div style={{ fontSize: "15px" }}>logout</div>
+                      </div> */}
+                  </>
                 </li>
               </ul>
             </div>

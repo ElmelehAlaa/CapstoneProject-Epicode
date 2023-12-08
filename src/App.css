@@ -374,3 +374,7 @@ button:hover {
 .input-select option {
   color: #333;
 }
+#dropdownNavbar {
+  background-color: transparent;
+  border: none;
+}
