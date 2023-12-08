@@ -1,59 +1,118 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMyProfile } from "../redux/actions";
+import { fetchMyProfile, updateMyProfile } from "../redux/actions";
+import { Col, Container, Row } from "react-bootstrap";
 
 const MyProfile = () => {
-  const [userData, setUserData] = useState({
-    username: "NomeUtente",
-    firstName: "Nome",
-    lastName: "Cognome",
-    avatar: "url_dell_avatar",
-    inputType: "MK",
-  });
+  const dispatch = useDispatch();
+  const myLogin = useSelector((state) => state.login.content);
+  const myData = useSelector((state) => state.profile.myContent);
+  const [localData, setLocalData] = useState({ ...myData });
 
   const handleDataChange = (e, field) => {
     const newValue = e.target.value;
-    setUserData((prevData) => ({
+    setLocalData((prevData) => ({
       ...prevData,
       [field]: newValue,
     }));
   };
-  const dispatch = useDispatch();
-  const myLogin = useSelector((state) => state.login.content);
+
+  const handleImageClick = () => {
+    document.getElementById("fileInput").click();
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      console.log("File caricato:", file);
+    }
+  };
+
+  const handleUpdateProfile = () => {
+    dispatch(updateMyProfile(localData, myData));
+  };
 
   useEffect(() => {
     dispatch(fetchMyProfile(myLogin.email));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setLocalData({ ...myData });
   }, []);
+
   return (
-    <div>
-      <h1>Il mio profilo</h1>
-
-      <img src={userData.avatar} alt="Avatar" style={{ width: "100px", height: "100px" }} />
-
-      <input type="text" value={userData.avatar} onChange={(e) => handleDataChange(e, "avatar")} />
-
-      <div>
-        <label>Nome utente:</label>
-        <input type="text" value={userData.username} onChange={(e) => handleDataChange(e, "username")} />
-      </div>
-      <div>
-        <label>Nome:</label>
-        <input type="text" value={userData.firstName} onChange={(e) => handleDataChange(e, "firstName")} />
-      </div>
-      <div>
-        <label>Cognome:</label>
-        <input type="text" value={userData.lastName} onChange={(e) => handleDataChange(e, "lastName")} />
-      </div>
-
-      <div>
-        <label>Tipo di input:</label>
-        <select value={userData.inputType} onChange={(e) => handleDataChange(e, "inputType")}>
-          <option value="MK">MK</option>
-          <option value="CONTROLLER">CONTROLLER</option>
-        </select>
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <h1 className="mb-5">Il mio profilo</h1>
+        <Col md={"6"}>
+          <h4 style={{ color: "orange" }}>premi per modificare la foto</h4>
+          <img
+            src={"http://ui-avatars.com/api/?name=Raven+Rolfson"}
+            alt="Avatar"
+            style={{ width: "300px", height: "300px", cursor: "pointer" }}
+            onClick={handleImageClick}
+          />
+          <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleFileChange} accept="image/*" />
+        </Col>
+        <Col md={"6"} className="custom-column">
+          <div className="input-container">
+            <label className="input-label">Nome utente:</label>
+            <input
+              type="text"
+              placeholder="username"
+              name="username"
+              value={localData.username}
+              onChange={(e) => handleDataChange(e, "username")}
+              className="input-text"
+            />
+          </div>
+          <div className="input-container">
+            <label className="input-label">Nome:</label>
+            <input
+              type="text"
+              placeholder="nome"
+              name="firstName"
+              value={localData.nome}
+              onChange={(e) => handleDataChange(e, "nome")}
+              className="input-text"
+            />
+          </div>
+          <div className="input-container">
+            <label className="input-label">Cognome:</label>
+            <input
+              type="text"
+              name="cognome"
+              value={localData.cognome}
+              onChange={(e) => handleDataChange(e, "cognome")}
+              className="input-text"
+            />
+          </div>
+          <div className="input-container">
+            <label className="input-label">Email:</label>
+            <input
+              type="email"
+              placeholder="input"
+              name="email"
+              value={localData.email}
+              onChange={(e) => handleDataChange(e, "email")}
+              className="input-text"
+            />
+          </div>
+          <div className="input-container">
+            <label className="input-label">Tipo di input:</label>
+            <select
+              placeholder="input"
+              name="inputType"
+              value={localData.inputType}
+              onChange={(e) => handleDataChange(e, "inputType")}
+              className="input-select"
+            >
+              <option value="MK">MK</option>
+              <option value="CONTROLLER">CONTROLLER</option>
+            </select>
+          </div>
+          <button onClick={handleUpdateProfile}>Aggiorna Profilo</button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
+
 export default MyProfile;

@@ -101,7 +101,35 @@ export const fetchMyProfile = (email) => {
       });
       if (resp.ok) {
         const fetchedMyProfile = await resp.json();
-        dispatch({ typeof: MY_PROFILE, payload: fetchedMyProfile });
+        dispatch({ type: MY_PROFILE, payload: fetchedMyProfile });
+      } else {
+        console.error("Errore durante la richiesta:", resp.statusText);
+      }
+    } catch (error) {
+      console.error("Errore durante la richiesta:", error);
+    }
+  };
+};
+
+export const updateMyProfile = (localData, myData) => {
+  return async (dispatch) => {
+    try {
+      const resp = await fetch(`http://localhost:3001/users/${myData.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          email: localData.email,
+          username: localData.username,
+          nome: localData.nome,
+          cognome: localData.cognome,
+        }),
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-type": "application/json",
+        },
+      });
+      if (resp.ok) {
+        const fetchMyProfileUpdated = await resp.json();
+        dispatch({ type: UPDATE_PROFILE, payload: fetchMyProfileUpdated });
       } else {
         console.error("Errore durante la richiesta:", resp.statusText);
       }

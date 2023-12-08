@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const MyNavbar = () => {
@@ -10,6 +11,7 @@ const MyNavbar = () => {
   const handleProfileClick = () => {
     setShowProfileDropdown(!showProfileDropdown);
   };
+  const myData = useSelector((state) => state.profile.myContent);
   // const scrollIntoView = (sectionId) => {
   //   const element = document.getElementById(sectionId);
   //   if (element) {
@@ -30,51 +32,67 @@ const MyNavbar = () => {
             }
           </div>
         </Link>
-        <div>
-          <ul id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
-            <li>
-              <div className="active">Home</div>
-            </li>
-            <li>
-              <div>News</div>
-            </li>
-            <li>
-              <div
-              //  onClick={() => scrollIntoView("membriSection")}
-              >
-                Membri
-              </div>
-            </li>
-            <li>
-              <Link to={"/servizi"}>
-                <div>Servizi</div>
-              </Link>
-            </li>
-            <li className="ms-5">
-              <img
-                onClick={handleProfileClick}
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  borderRadius: "50%",
-                }}
-                src="http://ui-avatars.com/api/?name=Raven+Rolfson"
-                alt="Profile"
-              />
-              {showProfileDropdown && (
-                <div style={{ backgroundColor: "orange" }} id="profileDropdown" className="dropdown-content">
-                  <Link to={"/myprofile"}>
-                    {" "}
-                    <div style={{ fontSize: "15px" }}>Visualizza profilo</div>
+        {myData && myData.length > 0 ? (
+          <>
+            <div>
+              <ul id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
+                <li>
+                  <Link to={""}>
+                    <div className="active">Home</div>
                   </Link>
-                </div>
-              )}
-            </li>
-          </ul>
-        </div>
-        <div id="mobile" onClick={handleClick}>
-          <i id="bar" className={clicked ? "fa-solid fa-xmark" : "fas fa-bars"}></i>
-        </div>
+                </li>
+                <li>
+                  <div>News</div>
+                </li>
+                <li>
+                  <div>Membri</div>
+                </li>
+                <li>
+                  <Link to={"/servizi"}>
+                    <div>Servizi</div>
+                  </Link>
+                </li>
+                <li className="ms-5">
+                  <img
+                    onClick={handleProfileClick}
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      borderRadius: "50%",
+                    }}
+                    src={myData.urlAvatar}
+                    alt="Profile"
+                  />
+                  {showProfileDropdown && (
+                    <>
+                      <div style={{ backgroundColor: "orange" }} id="profileDropdown1" className="dropdown-content">
+                        <Link to={"/myprofile"}>
+                          {" "}
+                          <div style={{ fontSize: "15px" }}>Visualizza profilo</div>
+                        </Link>
+                      </div>
+                      <div style={{ backgroundColor: "orange" }} id="profileDropdown2" className="dropdown-content">
+                        <Link to={"/myprofile"}>
+                          {" "}
+                          <div style={{ fontSize: "15px" }}>Visualizza profilo</div>
+                        </Link>
+                      </div>
+                    </>
+                  )}
+                </li>
+              </ul>
+            </div>
+            <div id="mobile" onClick={handleClick}>
+              <i id="bar" className={clicked ? "fa-solid fa-xmark" : "fas fa-bars"}></i>
+            </div>
+          </>
+        ) : (
+          <div>
+            <Link to="/login">
+              <div>Login</div>
+            </Link>
+          </div>
+        )}
       </nav>
     </>
   );
