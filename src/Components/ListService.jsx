@@ -17,15 +17,15 @@ const ListService = ({ title, imageUrl, description, reverse, imageBackGroundUrl
   return (
     <animated.div ref={ref} style={props}>
       <Row
-        className={`mt-5 mx-auto ${reverse ? "flex-row-reverse" : ""}`}
+        className={`mt-5 mb-5 mx-auto ${reverse ? "flex-row-reverse" : ""}`}
         style={{ backgroundImage: `url(${imageBackGroundUrl})` }}
       >
+        <h3 className="hServizi text-dark">{title}</h3>
         <Col md={6} className="my-5">
           <img src={imageUrl} alt={title} className="img-fluid" style={{ height: "400px" }} />
         </Col>
         <Col md={6} className="d-flex align-items-center">
           <div>
-            <h3 className="hServizi">{title}</h3>
             <p className="pServizi">{description}</p>
           </div>
         </Col>

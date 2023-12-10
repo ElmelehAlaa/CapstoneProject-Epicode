@@ -5,6 +5,7 @@ const ProPlayerPage = () => {
   return (
     <>
       <Container fluid>
+        <h3 style={{ fontSize: "60px", color: "orange" }}>Servizi ai Player</h3>
         <ListService
           title="AIM"
           imageUrl="https://as2.ftcdn.net/v2/jpg/01/32/26/17/1000_F_132261788_rrzWocZOIkJvUlovEF28oABVsLkngGAO.jpg"
@@ -35,7 +36,8 @@ const ProPlayerPage = () => {
         <ListService
           title="Alimentazione"
           imageUrl="https://cdn.gvmnet.it/admingvm/media/immagininews/misc/VAL-sport-e-alimentazione.jpeg"
-          description="Migliora i tuoi riflessi e il saper prendere informazioni in pochi millisecondi"
+          description="
+          Un'alimentazione adeguata è fondamentale negli esports per sostenere le prestazioni cognitive e fisiche. I giocatori dovrebbero puntare a una dieta equilibrata con carboidrati complessi per l'energia sostenuta, proteine per il recupero muscolare e acidi grassi omega-3 per la salute cerebrale. L'idratazione costante è essenziale, evitando bevande zuccherate. Limitare l'eccesso di caffeina e zuccheri può contribuire a mantenere livelli energetici stabili durante le sessioni di gioco prolungate"
           reverse
         />
       </Container>

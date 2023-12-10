@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateMyProfile } from "../redux/actions";
+import { fetchMyProfile, updateMyProfile } from "../redux/actions";
 import { Col, Container, Row } from "react-bootstrap";
 
 const MyProfile = () => {
+  const [avatarUpdated, setAvatarUpdated] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const dispatch = useDispatch();
 
@@ -36,8 +37,10 @@ const MyProfile = () => {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         });
-
-        return response.json();
+        const responseData = await response.json();
+        setAvatarUpdated(true);
+        console.log(avatarUpdated);
+        return responseData;
       } catch (error) {
         console.log(error);
       }
@@ -45,7 +48,7 @@ const MyProfile = () => {
   };
 
   const handleUpdateProfile = () => {
-    console.log(localData);
+    console.log("localdata" + localData);
     console.log(myData);
     dispatch(updateMyProfile(localData, myData));
     setShowSuccessMessage(true);
@@ -56,20 +59,20 @@ const MyProfile = () => {
   };
 
   useEffect(() => {
-    setLocalData({ ...myData });
+    if (avatarUpdated) {
+      setLocalData({ ...myData });
+      dispatch(fetchMyProfile(localData.email));
+      setAvatarUpdated(false);
+      console.log(avatarUpdated);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [avatarUpdated, myData]);
 
   return (
     <Container>
       <Row>
         <h1 className="mb-5">Il mio profilo</h1>
         <Col md={"6"}>
-          {showSuccessMessage && (
-            <div className="alert alert-success" role="alert">
-              Profilo aggiornato con successo!
-            </div>
-          )}
           <h4 style={{ color: "orange" }}>premi per modificare la foto</h4>
           <img
             src={myData.urlAvatar}

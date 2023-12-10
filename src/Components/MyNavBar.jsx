@@ -3,6 +3,7 @@ import { Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { LOGOUT } from "../redux/actions";
+import myImage from "../Assets/logo.png";
 
 const MyNavbar = () => {
   const dispatch = useDispatch();
@@ -23,17 +24,11 @@ const MyNavbar = () => {
   return (
     <>
       <nav style={{ height: "50px" }}>
-        <Link to={"/"}>
-          <div className="text-white fs-6">
-            {
-              <img
-                style={{ width: "50px" }}
-                src="https://1000logos.net/wp-content/uploads/2021/04/Fnatic-logo.png"
-                alt=""
-              />
-            }
-          </div>
-        </Link>
+        <div className="text-white fs-6">
+          {" "}
+          <Link to={"/"}>{<img style={{ width: "70px" }} src={myImage} alt="" />} </Link>
+        </div>
+
         {myData ? (
           <>
             <div>
@@ -43,9 +38,9 @@ const MyNavbar = () => {
                     <div className="active">Home</div>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <div>News</div>
-                </li>
+                </li> */}
                 <li>
                   <Link to={"/membri"}>
                     <div>Membri</div>

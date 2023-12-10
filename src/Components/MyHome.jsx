@@ -7,6 +7,7 @@ import { useSpring, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
 import MembersImg from "./MembersImg";
 import { Link } from "react-router-dom";
+import myImage from "../Assets/logo.png";
 
 const AnimatedSection = ({ children, reverse }) => {
   const [ref, inView] = useInView({
@@ -52,12 +53,7 @@ const MyHome = () => {
       >
         <Row>
           <Col xs={6} id="logoCol" className={`mx-auto mt-5 ${showLogo ? "show" : ""}`}>
-            <img
-              id="logoImg"
-              width={400}
-              src="https://1000logos.net/wp-content/uploads/2021/04/Fnatic-logo.png"
-              alt="logo Highscore"
-            />
+            <img id="logoImg" width={400} src={myImage} alt="logo Highscore" />
           </Col>
         </Row>
         <Row>
@@ -123,6 +119,22 @@ const MyHome = () => {
             </Col>
           </Row>
         </AnimatedSection>
+        <Row>
+          <Col xs={"8"} className="offset-2">
+            <h4 className="mt-5 me-5 hHome">Servizi</h4>
+          </Col>
+          <Col xs={"6"} className="offset-3">
+            <div>
+              {membersFetched.length !== 0 ? (
+                membersFetched.map((membroSingolo) => (
+                  <MembersImg key={membroSingolo.id} imgMembro={membroSingolo.urlAvatar} />
+                ))
+              ) : (
+                <div> caricamento...</div>
+              )}
+            </div>
+          </Col>
+        </Row>
         <Footer />
       </Container>
     </>
