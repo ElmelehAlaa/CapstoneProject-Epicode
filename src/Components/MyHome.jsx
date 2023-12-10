@@ -28,15 +28,30 @@ const AnimatedSection = ({ children, reverse }) => {
 };
 
 const MyHome = () => {
+  const [data, setData] = useState(null);
   const myLogin = useSelector((state) => state.login.content);
   const dispatch = useDispatch();
   const membersFetched = useSelector((state) => state.members.content);
   const [showLogo, setShowLogo] = useState(false);
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/servizi", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
     dispatch(fetchMembers());
     window.scrollTo({ top: 0, behavior: "smooth" });
     setShowLogo(true);
+    fetchData();
     dispatch(fetchMyProfile(myLogin));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

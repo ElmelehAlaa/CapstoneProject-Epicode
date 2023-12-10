@@ -1,8 +1,29 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CustomCard from "./CustomCard";
+import { useEffect, useState } from "react";
 
 const MyServizi = () => {
+  const [data, setData] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/servizi", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <Container fluid style={{ backgroundImage: 'url("https://www.extron.it/img/mktg/open_graph/esports.jpg")' }}>
@@ -10,67 +31,35 @@ const MyServizi = () => {
           <Row className="mx-0">
             <Col xs={"2"}></Col>
             <Col xs={"8"}>
-              <h2 className="hServizi" style={{ fontSize: "80px", fontWeight: "900" }}>
+              <h2 className="hServizi" style={{ fontSize: "100px", fontWeight: "900" }}>
                 CHI SEI?
               </h2>{" "}
             </Col>
             <Col xs={"2"}></Col>
           </Row>
-          <Row className="mx-0 mt-4">
-            <Col xs={"2"}></Col>
-            <Col xs={"4"}>
-              <Link to={"/ProPlayer"}>
-                <CustomCard
-                  heightImg="400px"
-                  widthImg="100%"
-                  backcolor="cornflowerblue"
-                  title=" PLAYER"
-                  imageUrl="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2023/09/25/14b27e82-ca06-42a7-b7d7-d97fa6481447_b9028916.jpg"
-                  description="Un giocatore che vuole migliorare individualmente"
-                />
-              </Link>
-            </Col>
-            <Col xs={"4"}>
-              <Link to={"/Amatoriale"}>
-                <CustomCard
-                  heightImg="400px"
-                  widthImg="100%"
-                  backcolor="orange"
-                  title="Squadra"
-                  imageUrl="https://www.dire.it/wp-content/uploads/2022/09/nazionale-pallavolo-maschile-.jpeg"
-                  description="Un gruppo di amici che vuole migliorare insieme"
-                />
-              </Link>
-            </Col>
-          </Row>
-          <Row className="mx-0 mt-3 justify-content-center">
-            <Col xs={"4"}>
-              <Link to={"/organizzazioni"}>
-                <CustomCard
-                  heightImg="400px"
-                  widthImg="100%"
-                  backcolor="orange"
-                  title="Organizzazioni"
-                  imageUrl="https://pbs.twimg.com/profile_images/1685954955113271296/a-9sgd0i_400x400.jpg"
-                  description="Una Squadra amatoriale che vuole migliorare insieme"
-                />
-              </Link>
-            </Col>
-            <Col xs={"4"}>
-              <Link to={"/investitori"}>
-                <CustomCard
-                  heightImg="400px"
-                  widthImg="100%"
-                  backcolor="cornflowerblue"
-                  title="Investitori"
-                  imageUrl="https://www.gazzettinonline.it/wp-content/uploads/2019/09/investitori-1280x720.jpg"
-                  description="Sei uno sponsor che cerca il giusto investimento nell'esports?
-                   Sei nel posto giusto!"
-                />
-              </Link>
-            </Col>
-          </Row>
-          <Col style={{ height: "100px" }} xs={"2"}></Col>
+          {data !== null && data.content && data.content.length > 0 ? (
+            <>
+              <Row className="mx-auto mt-4 justify-content-center">
+                {data.content.map((servizio, index) => (
+                  <Col key={index} xs="12" md="4" className="mt-5  ">
+                    <Link to={`/${servizio.title.toLowerCase()}`}>
+                      <CustomCard
+                        heightImg="500px"
+                        widthImg="100%"
+                        backcolor={index % 2 === 0 ? "orange" : "cornflowerblue"}
+                        title={servizio.title}
+                        imageUrl={servizio.imgUrl}
+                        description={servizio.description}
+                      />
+                    </Link>
+                  </Col>
+                ))}
+              </Row>
+              <Col xs={"2"}></Col>
+            </>
+          ) : (
+            <div>Caricamento...</div>
+          )}
         </Container>
       </Container>
     </>

@@ -12,6 +12,7 @@ import MyMembri from "./Components/MyMembri";
 import MyOrganizzazione from "./Components/MyOrganizzazione";
 import MyInvestitori from "./Components/MyInvestitori";
 import TeamServizi from "./Components/TeamServizi";
+import MyPrenotazioni from "./Components/MyPrenotazioni";
 
 function App() {
   return (
@@ -25,10 +26,11 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />}></Route>
           <Route path="" element={<MyHome />} />
           <Route path="/Servizi" element={<MyServizi />} />
-          <Route path="/ProPlayer" element={<ProPlayerPage />} />
-          <Route path="/Amatoriale" element={<TeamServizi />} />
+          <Route path="/player" element={<ProPlayerPage />} />
+          <Route path="/squadra" element={<TeamServizi />} />
           <Route path="/organizzazioni" element={<MyOrganizzazione />} />
           <Route path="/investitori" element={<MyInvestitori />} />
+          <Route path="/mie-prenotazioni" element={<MyPrenotazioni />} />
         </Routes>
       </BrowserRouter>
     </div>

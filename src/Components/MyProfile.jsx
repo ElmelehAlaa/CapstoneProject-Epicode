@@ -77,7 +77,7 @@ const MyProfile = () => {
           <img
             src={myData.urlAvatar}
             alt="Avatar"
-            style={{ width: "300px", height: "300px", cursor: "pointer" }}
+            style={{ width: "400px", height: "500px", cursor: "pointer", border: "solid", borderColor: "orange" }}
             onClick={handleImageClick}
           />
           <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleFileChange} accept="image/*" />
