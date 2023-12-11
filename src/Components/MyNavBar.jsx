@@ -76,12 +76,14 @@ const MyNavbar = () => {
                           {" "}
                           <Dropdown.Item href="#/action-1">Modifica profilo</Dropdown.Item>
                         </Link>
+                        <Link to={"/mie-prenotazioni"}>
+                          <Dropdown.Item href="#/action-3">Mie prenotazioni</Dropdown.Item>
+                        </Link>
                         <Link to={"/login"}>
                           <Dropdown.Item href="#/action-2" onClick={handleLogout}>
                             Logout
                           </Dropdown.Item>
                         </Link>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </>

@@ -41,9 +41,10 @@ const MyServizi = () => {
             <>
               <Row className="mx-auto mt-4 justify-content-center">
                 {data.content.map((servizio, index) => (
-                  <Col key={index} xs="12" md="4" className="mt-5  ">
-                    <Link to={`/${servizio.title.toLowerCase()}`}>
+                  <Col key={index} xs="12" md="4" className="mt-5">
+                    <Link to={`/servizi/${servizio.id}`}>
                       <CustomCard
+                        idServizio={servizio.id}
                         heightImg="500px"
                         widthImg="100%"
                         backcolor={index % 2 === 0 ? "orange" : "cornflowerblue"}
@@ -55,7 +56,6 @@ const MyServizi = () => {
                   </Col>
                 ))}
               </Row>
-              <Col xs={"2"}></Col>
             </>
           ) : (
             <div>Caricamento...</div>
@@ -65,4 +65,5 @@ const MyServizi = () => {
     </>
   );
 };
+
 export default MyServizi;

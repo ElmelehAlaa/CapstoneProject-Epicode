@@ -20,7 +20,6 @@ const ListService = ({ title, imageUrl, description, reverse, imageBackGroundUrl
         className={`mt-5 mb-5 mx-auto ${reverse ? "flex-row-reverse" : ""}`}
         style={{ backgroundImage: `url(${imageBackGroundUrl})` }}
       >
-        <h3 className="hServizi text-dark">{title}</h3>
         <Col md={6} className="my-5">
           <img src={imageUrl} alt={title} className="img-fluid" style={{ height: "400px" }} />
         </Col>

@@ -8,6 +8,7 @@ const MyPrenotazioni = () => {
           <Col xs={"12"}>
             <h2 style={{ color: "orange", fontSize: "80px" }}>I MIEI ORDINI</h2>
           </Col>
+          <Col xs={"12"}></Col>
         </Row>
       </Container>
     </>
