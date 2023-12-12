@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const MyServizi = () => {
   const [data, setData] = useState(null);
 
-  const fetchData = async () => {
+  const fetchServizi = async () => {
     try {
       const response = await fetch("http://localhost:3001/servizi", {
         headers: {
@@ -21,7 +21,7 @@ const MyServizi = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchServizi();
   }, []);
 
   return (
