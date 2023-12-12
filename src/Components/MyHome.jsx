@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import MembersImg from "./MembersImg";
 import { Link } from "react-router-dom";
 import myImage from "../Assets/logo.png";
+import ServiceSlider from "./ServiceSlider";
 
 const AnimatedSection = ({ children, reverse }) => {
   const [ref, inView] = useInView({
@@ -48,6 +49,7 @@ const MyHome = () => {
   };
 
   useEffect(() => {
+    console.log(data);
     dispatch(fetchMembers());
     window.scrollTo({ top: 0, behavior: "smooth" });
     setShowLogo(true);
@@ -116,6 +118,14 @@ const MyHome = () => {
             </Col>
           </Row>
         </AnimatedSection>
+        <Row>
+          <Col xs={"8"} className="offset-2">
+            <h4 className="mt-5 me-5 hHome">Servizi</h4>
+          </Col>
+          <Col xs={"6"} className="offset-3">
+            <div>{data !== null ? <ServiceSlider data={data.content} /> : <div> caricamento...</div>}</div>
+          </Col>
+        </Row>
         <AnimatedSection>
           <Row id="membriSection" className="mt-5">
             <Col xs={"8"} className="offset-2">
@@ -134,22 +144,6 @@ const MyHome = () => {
             </Col>
           </Row>
         </AnimatedSection>
-        <Row>
-          <Col xs={"8"} className="offset-2">
-            <h4 className="mt-5 me-5 hHome">Servizi</h4>
-          </Col>
-          <Col xs={"6"} className="offset-3">
-            <div>
-              {membersFetched.length !== 0 ? (
-                membersFetched.map((membroSingolo) => (
-                  <MembersImg key={membroSingolo.id} imgMembro={membroSingolo.urlAvatar} />
-                ))
-              ) : (
-                <div> caricamento...</div>
-              )}
-            </div>
-          </Col>
-        </Row>
         <Footer />
       </Container>
     </>

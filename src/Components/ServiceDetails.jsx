@@ -36,12 +36,7 @@ const ServiceDetails = () => {
           {serviceDetails.map((service, index) => (
             <div key={index}>
               <h3 style={{ fontSize: "60px", color: "orange" }}>{service.title}</h3>
-              <ListService
-                title={service.title}
-                imageUrl={service.imageUrl}
-                description={service.description}
-                reverse={index % 2 === 1}
-              />
+              <ListService imageUrl={service.imageUrl} description={service.description} reverse={index % 2 === 1} />
             </div>
           ))}
         </>
