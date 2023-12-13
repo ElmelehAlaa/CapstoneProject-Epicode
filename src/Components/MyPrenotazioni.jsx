@@ -53,7 +53,7 @@ const MyPrenotazioni = () => {
                     </tr>
                   ))
                 ) : (
-                  <div>caricamento</div>
+                  <div>non ci sono prenotazioni</div>
                 )}
               </tbody>
             </Table>

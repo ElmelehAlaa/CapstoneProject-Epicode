@@ -8,10 +8,18 @@ import registrazioneReducer from "../reducers/registrazione";
 import membersReducer from "../reducers/members";
 import myProfileReducer from "../reducers/myProfile";
 import myLoginReducer from "../reducers/loginEmail";
+import { encryptTransform } from "redux-persist-transform-encrypt";
 const persistConfig = {
   key: "root",
   storage,
+  transforms: [
+    encryptTransform({
+      secretKey: "CIAOCIAOCIAO",
+      onError: function (error) {},
+    }),
+  ],
 };
+
 const rootReducer = combineReducers({
   loading: loadingReducer,
   token: tokenReducer,

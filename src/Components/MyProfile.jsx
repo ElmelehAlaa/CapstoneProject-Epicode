@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMyProfile, updateMyProfile } from "../redux/actions";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Image, Row } from "react-bootstrap";
 
 const MyProfile = () => {
   const [avatarUpdated, setAvatarUpdated] = useState(false);
@@ -74,12 +74,14 @@ const MyProfile = () => {
         <h1 className="mb-5">Il mio profilo</h1>
         <Col md={"6"}>
           <h4 style={{ color: "orange" }}>premi per modificare la foto</h4>
-          <img
+          <Image
             src={myData.urlAvatar}
-            alt="Avatar"
-            style={{ width: "400px", height: "500px", cursor: "pointer", border: "solid", borderColor: "orange" }}
+            thumbnail
+            alt="avatar"
+            style={{ width: "400px", height: "500px", cursor: "pointer" }}
             onClick={handleImageClick}
           />
+
           <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleFileChange} accept="image/*" />
         </Col>
         <Col md={"6"} className="custom-column">
