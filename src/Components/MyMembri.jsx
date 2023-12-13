@@ -17,6 +17,7 @@ const MyMembri = () => {
   };
 
   const [fotoSelezionata, setFotoSelezionata] = useState("");
+  const [playerSelezionato, setPlayerSelezionato] = useState("");
 
   const membersFetched = useSelector((state) => state.members.content);
 
@@ -31,14 +32,17 @@ const MyMembri = () => {
 
   const handleColClick = (membroSingolo) => {
     setFotoSelezionata(membroSingolo.urlAvatar);
+    setPlayerSelezionato(membroSingolo);
   };
 
   return (
     <>
       <Container fluid>
         <Row className="justify-content-center" style={{ position: "relative" }}>
-          <h3 className="text-center fs-1">I Nostri Talent</h3>
-          <Col md={"6"}>
+          <h3 className="text-center fs-1 my-4 " style={{ fontWeight: "700" }}>
+            I Nostri Talent
+          </h3>
+          <Col md={"6"} style={{ width: "25%" }}>
             {membersFetched.length !== 0 ? (
               membersFetched.map((membroSingolo) => (
                 <>
@@ -75,7 +79,7 @@ const MyMembri = () => {
                         roundedCircle
                       />
                     </div>
-                    <div className="d-inline-block" style={{ verticalAlign: "middle" }}>
+                    <div className="d-inline-block" style={{ verticalAlign: "middle", color: "white" }}>
                       <h4>{membroSingolo.nome}</h4>
                       <h4>"{membroSingolo.username}"</h4>
                       <h4>{membroSingolo.cognome}</h4>
@@ -92,21 +96,50 @@ const MyMembri = () => {
             style={{
               position: "relative",
               border: "solid",
+              padding: "0",
             }}
           >
-            {fotoSelezionata ? (
+            {fotoSelezionata && playerSelezionato ? (
               <div
                 style={{
+                  position: "sticky",
                   backgroundImage: `url(https://www.tuttotek.it/wp-content/uploads/2019/02/BLOODHOUND.jpg)`,
+                  backgroundSize: "cover",
                   height: "100%",
+                  top: 0,
+                  right: 0,
                 }}
               >
                 <img
-                  style={{ width: "35%", height: "auto", position: "fixed", right: "300px", top: "50px" }}
+                  style={{
+                    width: "60%",
+                    height: "auto",
+                    position: "sticky",
+                    right: "600px",
+                    top: "50px",
+                    display: "inline-block",
+                  }}
                   src={fotoSelezionata}
                   alt="foto-selezionata"
                 />
-                <div style={{ textAlign: "end" }}>ciao</div>
+                <div
+                  style={{
+                    textAlign: "start",
+                    position: "fixed",
+                    color: "white",
+                    display: "inline-block",
+                    top: "300px",
+                    right: "260px",
+                  }}
+                >
+                  <div>
+                    <h3>{playerSelezionato.username}</h3>
+                    <h4>Nome : {playerSelezionato.nome}</h4>
+                    <h4>Cognome : {playerSelezionato.cognome}</h4>
+                    <h4>input : {playerSelezionato.input}</h4>
+                    <h4>Player dalle grandissime abilita meccaniche</h4>
+                  </div>
+                </div>
               </div>
             ) : (
               <h4>Seleziona un talent</h4>

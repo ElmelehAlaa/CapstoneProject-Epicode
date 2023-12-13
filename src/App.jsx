@@ -10,6 +10,7 @@ import MyProfile from "./Components/MyProfile";
 import MyMembri from "./Components/MyMembri";
 import MyPrenotazioni from "./Components/MyPrenotazioni";
 import ServiceDetails from "./Components/ServiceDetails";
+import PrenotazioneServizio from "./Components/PrenotazioneServizio";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/mie-prenotazioni" element={<MyPrenotazioni />} />
           <Route path="/servizi/:id" element={<ServiceDetails />} />
           <Route path="" element={<MyHome />} />
+          <Route path="/prenotazione-servizio" element={<PrenotazioneServizio />} />
         </Routes>
       </BrowserRouter>
     </div>
