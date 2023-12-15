@@ -249,7 +249,17 @@ nav {
   border: 1px solid cornflowerblue;
   border-radius: 4px;
 }
-
+.buttonPrenota {
+  position: fixed;
+  font-size: 30px;
+  height: 70px;
+  width: 450px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  font-weight: 700;
+  background-color: rgb(8, 120, 190);
+}
 .login-container button {
   background-color: orange;
   color: #fff;
@@ -306,7 +316,7 @@ form button {
 form button:hover {
   background-color: royalblue;
 }
-h2,
+
 h4 {
   color: orange;
 }
@@ -351,7 +361,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: cornflowerblue;
+  background-color: rgb(8, 120, 190);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -381,13 +391,15 @@ button:hover {
 
   display: inline-block;
 }
-.pMembroSelezionato {
+.pMembroSelezionato h3,
+h4 {
   position: sticky;
   color: white;
-  display: inline-block;
+  display: block;
   top: 0px;
   right: 0px;
-  margin-top: 15px;
+  padding-top: 15px;
+  font-weight: 700;
   font-size: 30px;
 }
 
@@ -474,6 +486,7 @@ button:hover {
   .titleHome,
   .hHome {
     font-size: 1.5rem;
+    color: white;
   }
 
   .pHome {

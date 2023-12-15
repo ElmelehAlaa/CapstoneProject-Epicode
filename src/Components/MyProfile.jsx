@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMyProfile, updateMyProfile } from "../redux/actions";
 import { Col, Container, Image, Row } from "react-bootstrap";
+import myImage from "../Assets/BackgroundESL.jpg";
+import { FaPencilAlt } from "react-icons/fa";
 
 const MyProfile = () => {
   const [avatarUpdated, setAvatarUpdated] = useState(false);
@@ -69,18 +71,36 @@ const MyProfile = () => {
   }, [avatarUpdated, myData]);
 
   return (
-    <Container>
+    <Container
+      fluid
+      style={{ backgroundImage: `url(${myImage})`, height: "100vh", backgroundSize: "cover", paddingTop: "50px" }}
+    >
       <Row>
-        <h1 className="mb-5">Il mio profilo</h1>
+        <h1 className="mb-5" style={{ fontSize: "50px", fontWeight: 800 }}>
+          Il mio profilo
+        </h1>
         <Col md={"6"}>
-          <h4 style={{ color: "orange" }}>premi per modificare la foto</h4>
-          <Image
-            src={myData.urlAvatar}
-            thumbnail
-            alt="avatar"
-            style={{ width: "400px", height: "500px", cursor: "pointer" }}
-            onClick={handleImageClick}
-          />
+          <div style={{ position: "relative", display: "inline-block" }}>
+            <Image
+              src={myData.urlAvatar}
+              thumbnail
+              alt="avatar"
+              style={{ width: "400px", height: "500px", cursor: "pointer" }}
+              onClick={handleImageClick}
+            />{" "}
+            <div
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                cursor: "pointer",
+                color: "white",
+              }}
+              onClick={handleImageClick}
+            >
+              <FaPencilAlt size={20} style={{ color: "black" }} />
+            </div>
+          </div>
 
           <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleFileChange} accept="image/*" />
         </Col>
@@ -148,7 +168,9 @@ const MyProfile = () => {
             </select>
           </div>
 
-          <button onClick={handleUpdateProfile}>Aggiorna Profilo</button>
+          <button style={{ width: "300px", height: "75px", borderRadius: "20px" }} onClick={handleUpdateProfile}>
+            Aggiorna Profilo
+          </button>
         </Col>
       </Row>
     </Container>

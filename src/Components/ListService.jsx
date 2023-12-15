@@ -21,7 +21,7 @@ const ListService = ({ title, imageUrl, description, reverse, imageBackGroundUrl
         style={{ backgroundImage: `url(${imageBackGroundUrl})` }}
       >
         <Col md={6} className="my-5">
-          <img src={imageUrl} alt={title} className="img-fluid" style={{ height: "auto" }} />
+          <img src={imageUrl} alt={title} className="img-fluid" style={{ height: "500px" }} />
         </Col>
         <Col md={6} className="d-flex align-items-center">
           <div>

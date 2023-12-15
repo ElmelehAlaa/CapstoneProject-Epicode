@@ -47,7 +47,7 @@ const MyServizi = () => {
                         idServizio={servizio.id}
                         heightImg="550px"
                         widthImg="100%"
-                        backcolor={index % 2 === 0 ? "orange" : "cornflowerblue"}
+                        backcolor={index % 2 === 0 ? "orange" : "rgb(8, 120, 190)"}
                         title={servizio.title}
                         imageUrl={servizio.imgUrl}
                         description={servizio.description}

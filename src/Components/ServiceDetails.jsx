@@ -1,12 +1,15 @@
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import ListService from "./ListService";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"; // Aggiungi useParams
+import { useNavigate, useParams } from "react-router-dom";
 
 const ServiceDetails = () => {
   const [serviceDetails, setServiceDetails] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
+  const handlePrenotaClick = () => {
+    navigate("/prenotazione-servizio", { state: params.id });
+  };
 
   useEffect(() => {
     console.log(params.id);
@@ -39,6 +42,9 @@ const ServiceDetails = () => {
               <ListService imageUrl={service.imageUrl} description={service.description} reverse={index % 2 === 1} />
             </div>
           ))}
+          <Button className="buttonPrenota" onClick={handlePrenotaClick}>
+            Prenota Ora il tuo servizio!
+          </Button>
         </>
       ) : (
         <div>Caricamento...</div>

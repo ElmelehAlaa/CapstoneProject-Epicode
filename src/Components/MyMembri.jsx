@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import myImage from "../Assets/background2.jpg";
 
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { useState } from "react";
@@ -37,9 +38,9 @@ const MyMembri = () => {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid style={{ backgroundImage: `url(${myImage})`, height: "100%", backgroundSize: "cover" }}>
         <Row className="justify-content-center" style={{ position: "relative" }}>
-          <h3 className="text-center fs-1 my-4 " style={{ fontWeight: "700" }}>
+          <h3 className="text-center fs-1 my-4 text-white " style={{ fontWeight: "700" }}>
             I Nostri Talent
           </h3>
           <Col xs={"6"} className="selezionaUnMembro">
@@ -80,9 +81,7 @@ const MyMembri = () => {
                       />
                     </div>
                     <div className="d-inline-block" style={{ verticalAlign: "middle", color: "white" }}>
-                      <h4>{membroSingolo.nome}</h4>
-                      <h4>"{membroSingolo.username}"</h4>
-                      <h4>{membroSingolo.cognome}</h4>
+                      <h4 style={{ color: "white", fontWeight: 700 }}>"{membroSingolo.username}"</h4>
                     </div>
                   </Col>
                 </>
@@ -115,7 +114,7 @@ const MyMembri = () => {
                 }}
               >
                 <div className="pMembroSelezionato">
-                  <h3>{playerSelezionato.username}</h3>
+                  <h3>"{playerSelezionato.username}"</h3>
                   <h4>Nome : {playerSelezionato.nome}</h4>
                   <h4>Cognome : {playerSelezionato.cognome}</h4>
                   <h4>input : {playerSelezionato.input}</h4>

@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import MembersImg from "./MembersImg";
 import { Link } from "react-router-dom";
 import myImage from "../Assets/logo.png";
+import myBackground from "../Assets/background2.jpg";
 import ServiceSlider from "./ServiceSlider";
 
 const AnimatedSection = ({ children, reverse }) => {
@@ -18,7 +19,7 @@ const AnimatedSection = ({ children, reverse }) => {
   const props = useSpring({
     opacity: inView ? 1 : 0,
     transform: inView ? "translateX(0)" : `translateX(${reverse ? "-" : ""}500px)`,
-    config: { duration: 2000 },
+    config: { duration: 1000 },
   });
 
   return (
@@ -63,8 +64,9 @@ const MyHome = () => {
       <Container
         fluid
         style={{
-          backgroundImage:
-            'url("https://img.freepik.com/premium-photo/abstract-video-game-scifi-gaming-red-blue-vs-esports-backgound-vr-virtual-reality-simulation-metaverse-scene-stand-pedestal-stage-3d-illustration-rendering-futuristic-neon-glow-room_42100-2309.jpg")',
+          backgroundImage: `url(${myBackground})`,
+          height: "100%",
+          backgroundSize: "cover",
           color: "white",
         }}
       >
