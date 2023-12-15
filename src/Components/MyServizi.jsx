@@ -30,7 +30,7 @@ const MyServizi = () => {
         <Container fluid className="m-0 p-0 pt-3">
           <Row className="mx-0">
             <Col xs={"2"}></Col>
-            <Col xs={"8"}>
+            <Col md={"8"} xs={"12"}>
               <h2 className="hServizi" style={{ fontSize: "100px", fontWeight: "900" }}>
                 CHI SEI?
               </h2>{" "}
@@ -41,11 +41,11 @@ const MyServizi = () => {
             <>
               <Row className="mx-auto mt-4 justify-content-center">
                 {data.content.map((servizio, index) => (
-                  <Col key={index} xs="12" md="6" className="mt-5" style={{ width: "40%" }}>
+                  <Col key={index} xs="12" md="5" className="mt-5 myServizi">
                     <Link to={`/servizi/${servizio.id}`}>
                       <CustomCard
                         idServizio={servizio.id}
-                        heightImg="500px"
+                        heightImg="550px"
                         widthImg="100%"
                         backcolor={index % 2 === 0 ? "orange" : "cornflowerblue"}
                         title={servizio.title}

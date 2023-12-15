@@ -119,6 +119,7 @@ nav {
 }
 #navbar.active {
   right: 0px;
+  z-index: 3;
 }
 
 .custom-card {
@@ -182,6 +183,7 @@ nav {
 #logoCol {
   overflow: hidden;
 }
+
 #logoImg {
   transform: translateX(-250%);
   transition: transform 2s ease-in-out;
@@ -193,12 +195,20 @@ nav {
 .pHome {
   font-size: 25px;
 }
+.myServizi {
+  width: 40%;
+}
+.hServiceDetails {
+  font-size: 45px;
+  color: orange;
+  margin-top: 20px;
+}
 .hHome {
   font-size: 45px;
   color: orange;
 }
 .pServizi {
-  font-size: 30px;
+  font-size: 40px;
 }
 .hServizi {
   font-size: 45px;
@@ -225,7 +235,9 @@ nav {
   display: flex;
   flex-direction: column;
 }
-
+.selezionaUnMembro {
+  width: 25%;
+}
 .login-container label {
   margin-bottom: 8px;
   color: cornflowerblue;
@@ -357,11 +369,26 @@ button:hover {
 
 .input-text,
 .input-select {
-  width: 400px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+.membroSelezionato {
+  width: 60%;
+  height: auto;
+  position: sticky;
+
+  display: inline-block;
+}
+.pMembroSelezionato {
+  position: sticky;
+  color: white;
+  display: inline-block;
+  top: 0px;
+  right: 0px;
+  margin-top: 15px;
+  font-size: 30px;
 }
 
 .input-select {
@@ -434,4 +461,37 @@ button:hover {
   right: 0;
   top: 0;
   transform: rotateZ(180deg);
+}
+@media (max-width: 767px) {
+  #logoCol {
+    text-align: center;
+  }
+
+  #logoImg {
+    width: 80%;
+  }
+
+  .titleHome,
+  .hHome {
+    font-size: 1.5rem;
+  }
+
+  .pHome {
+    font-size: 1rem;
+  }
+  .membroSelezionato {
+    width: 100%;
+  }
+  .pMembroSelezionato {
+    font-size: 20px;
+  }
+  .hServiceDetails {
+    font-size: 30px;
+  }
+  .pServizi {
+    font-size: 20px;
+  }
+  .selezionaUnMembro {
+    width: 50%;
+  }
 }

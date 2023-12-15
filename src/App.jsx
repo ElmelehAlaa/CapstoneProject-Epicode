@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
 import MyNavBar from "./Components/MyNavBar";
 import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
 import MyServizi from "./Components/MyServizi";
 import MyHome from "./Components/MyHome";
 import Login from "./Components/Login";

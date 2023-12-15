@@ -42,13 +42,13 @@ const MyMembri = () => {
           <h3 className="text-center fs-1 my-4 " style={{ fontWeight: "700" }}>
             I Nostri Talent
           </h3>
-          <Col md={"6"} style={{ width: "25%" }}>
+          <Col xs={"6"} className="selezionaUnMembro">
             {membersFetched.length !== 0 ? (
               membersFetched.map((membroSingolo) => (
                 <>
                   <Col
                     onClick={() => handleColClick(membroSingolo, getNextBackgroundImage())}
-                    md={"12"}
+                    xs={"12"}
                     key={membroSingolo.id}
                     style={{
                       backgroundImage: `url("${getNextBackgroundImage()}")`,
@@ -92,17 +92,21 @@ const MyMembri = () => {
             )}
           </Col>
           <Col
-            md={6}
+            xs={6}
             style={{
-              position: "relative",
+              position: "sticky",
+              top: 0,
+              right: 0,
+              height: "100vh",
               border: "solid",
               padding: "0",
+              zIndex: 1,
             }}
           >
             {fotoSelezionata && playerSelezionato ? (
               <div
                 style={{
-                  position: "sticky",
+                  position: "relative",
                   backgroundImage: `url(https://www.tuttotek.it/wp-content/uploads/2019/02/BLOODHOUND.jpg)`,
                   backgroundSize: "cover",
                   height: "100%",
@@ -110,36 +114,14 @@ const MyMembri = () => {
                   right: 0,
                 }}
               >
-                <img
-                  style={{
-                    width: "60%",
-                    height: "auto",
-                    position: "sticky",
-                    right: "600px",
-                    top: "50px",
-                    display: "inline-block",
-                  }}
-                  src={fotoSelezionata}
-                  alt="foto-selezionata"
-                />
-                <div
-                  style={{
-                    textAlign: "start",
-                    position: "fixed",
-                    color: "white",
-                    display: "inline-block",
-                    top: "300px",
-                    right: "260px",
-                  }}
-                >
-                  <div>
-                    <h3>{playerSelezionato.username}</h3>
-                    <h4>Nome : {playerSelezionato.nome}</h4>
-                    <h4>Cognome : {playerSelezionato.cognome}</h4>
-                    <h4>input : {playerSelezionato.input}</h4>
-                    <h4>Player dalle grandissime abilita meccaniche</h4>
-                  </div>
+                <div className="pMembroSelezionato">
+                  <h3>{playerSelezionato.username}</h3>
+                  <h4>Nome : {playerSelezionato.nome}</h4>
+                  <h4>Cognome : {playerSelezionato.cognome}</h4>
+                  <h4>input : {playerSelezionato.input}</h4>
+                  <h4>Player dalle grandissime abilita meccaniche</h4>
                 </div>
+                <img className="membroSelezionato" src={fotoSelezionata} alt="foto-selezionata" />
               </div>
             ) : (
               <h4>Seleziona un talent</h4>
