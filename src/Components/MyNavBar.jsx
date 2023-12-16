@@ -51,7 +51,7 @@ const MyNavbar = () => {
                     <div>Servizi</div>
                   </Link>
                 </li>
-                <li className="ms-5">
+                <li>
                   <>
                     <Dropdown>
                       <Dropdown.Toggle id="dropdownNavbar">

@@ -85,7 +85,7 @@ const MyProfile = () => {
               src={myData.urlAvatar}
               thumbnail
               alt="avatar"
-              style={{ width: "400px", height: "500px", cursor: "pointer" }}
+              style={{ width: "400px", height: "500px", cursor: "pointer", border: "solid" }}
               onClick={handleImageClick}
             />{" "}
             <div

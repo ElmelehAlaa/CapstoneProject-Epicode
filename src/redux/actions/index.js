@@ -140,3 +140,19 @@ export const updateMyProfile = (localData, myData) => {
     }
   };
 };
+export const prenotaServizio = (servizioSelezionato) => {
+  return async (dispatch) => {
+    try {
+      await fetch(`http://localhost:3001/prenotazioni/${servizioSelezionato.id}/prenota`, {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-type": "application/json",
+        },
+      });
+      console.log("Prenotazione avvenuta con successo");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};

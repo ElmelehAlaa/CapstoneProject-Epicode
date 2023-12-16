@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import myImage from "../Assets/Background.jpg";
 
 const MyPrenotazioni = () => {
   const [prenotazioni, setPrenotazioni] = useState(null);
@@ -21,18 +22,33 @@ const MyPrenotazioni = () => {
       console.log(error);
     }
   };
+  const getColorByState = (state) => {
+    switch (state) {
+      case "IN_ATTESA_DI_CONFERMA":
+        return "#cc9900";
+      case "CONFERMATA":
+        return "green";
+      case "COMPLETATA":
+        return "blue";
+      case "ANNULLATA":
+        return "red";
+      default:
+        return "black";
+    }
+  };
+
   useEffect(() => {
     fetchMyPrenotazioni();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
-      <Container>
+      <Container fluid style={{ backgroundImage: `url(${myImage})`, backgroundSize: "cover", minHeight: "100vh" }}>
         <Row>
-          <Col xs={"12"}>
+          <Col xs={"8"} className="m-auto">
             <h2 style={{ color: "orange", fontSize: "80px" }}>I MIEI ORDINI</h2>
           </Col>
-          <Col xs={"12"}>
+          <Col xs={"8"} className="m-auto">
             <Table striped bordered condensed hover>
               <thead>
                 <tr>
@@ -48,8 +64,10 @@ const MyPrenotazioni = () => {
                     <tr key={prenotazione.id}>
                       <td>{prenotazione.id}</td>
                       <td>{prenotazione.servizio.title}</td>
-                      <td>{prenotazione.createdAt}</td>
-                      <td>{prenotazione.prenotazioneStato}</td>
+                      <td>{prenotazione.createdAt.substring(0, 10)}</td>
+                      <td style={{ color: getColorByState(prenotazione.prenotazioneStato) }}>
+                        {prenotazione.prenotazioneStato ? prenotazione.prenotazioneStato.replace(/_/g, " ") : ""}
+                      </td>
                     </tr>
                   ))
                 ) : (

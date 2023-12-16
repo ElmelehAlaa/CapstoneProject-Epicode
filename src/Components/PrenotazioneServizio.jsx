@@ -2,10 +2,14 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import myImage from "../Assets/Background.jpg";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { prenotaServizio } from "../redux/actions";
 
 const PrenotazioneServizio = () => {
   const [servizioSelezionato, setServizioSelezionato] = useState(null);
   const location = useLocation();
+  const dispatch = useDispatch();
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const fetchServizioSelezionato = async () => {
     try {
@@ -19,6 +23,14 @@ const PrenotazioneServizio = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+  };
+  const handlePostPrenotazione = () => {
+    dispatch(prenotaServizio(servizioSelezionato));
+    setShowSuccessMessage(true);
+
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -35,6 +47,11 @@ const PrenotazioneServizio = () => {
       <Row>
         <Col xs={"4"} className="m-auto">
           <Card className="mt-5">
+            {showSuccessMessage && (
+              <div className="alert alert-success" role="alert">
+                Prenotazione effettuata con successo!
+              </div>
+            )}
             {servizioSelezionato !== null && servizioSelezionato !== undefined && (
               <>
                 <Card.Img variant="top" src={servizioSelezionato.imgUrl} />
@@ -50,7 +67,9 @@ const PrenotazioneServizio = () => {
 
                   <Card.Text> Servizio: 1 mese di Coaching completo dai nostri Coach professionisti </Card.Text>
 
-                  <Button variant="primary">{servizioSelezionato.costo !== 0 ? "Purchase" : "Contattaci"}</Button>
+                  <Button onClick={handlePostPrenotazione} variant="primary">
+                    {servizioSelezionato.costo !== 0 ? "Purchase" : "Contattaci"}
+                  </Button>
                 </Card.Body>
               </>
             )}
