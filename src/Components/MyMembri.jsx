@@ -102,16 +102,7 @@ const MyMembri = () => {
                   zIndex: 1,
                 }}
               >
-                <div
-                  style={{
-                    position: "relative",
-                    backgroundImage: `url(https://www.tuttotek.it/wp-content/uploads/2019/02/BLOODHOUND.jpg)`,
-                    backgroundSize: "cover",
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "row-reverse",
-                  }}
-                >
+                <div className="colMembroSelezionato">
                   <div className="pMembroSelezionato" style={{ paddingTop: "25%", marginRight: "20px" }}>
                     <h3>"{playerSelezionato.username}"</h3>
                     <h4>Nome: {playerSelezionato.nome}</h4>

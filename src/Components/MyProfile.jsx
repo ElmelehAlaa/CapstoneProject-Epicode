@@ -73,7 +73,7 @@ const MyProfile = () => {
   return (
     <Container
       fluid
-      style={{ backgroundImage: `url(${myImage})`, height: "100vh", backgroundSize: "cover", paddingTop: "50px" }}
+      style={{ backgroundImage: `url(${myImage})`, height: "110vh", backgroundSize: "cover", paddingTop: "25px" }}
     >
       <Row>
         <h1 className="mb-5" style={{ fontSize: "50px", fontWeight: 800 }}>
