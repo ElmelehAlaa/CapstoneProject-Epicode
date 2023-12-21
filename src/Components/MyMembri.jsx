@@ -40,7 +40,7 @@ const MyMembri = () => {
   return (
     <>
       <Container fluid style={{ backgroundImage: `url(${myImage})`, height: "100%", backgroundSize: "cover" }}>
-        <Row className="justify-content-center" style={{ position: "relative" }}>
+        <Row className="justify-content-center">
           <h3 className="text-center fs-1 my-4 text-white" style={{ fontWeight: "700" }}>
             I Nostri Talent
           </h3>
@@ -56,7 +56,7 @@ const MyMembri = () => {
                     backgroundSize: "cover",
                     border: "solid",
                     textAlign: "start",
-                    marginBottom: "15px", // Aggiungi margine per lo spaziamento tra gli elementi
+                    marginBottom: "15px",
                   }}
                 >
                   <div style={{ display: "inline-block" }}>
@@ -90,34 +90,25 @@ const MyMembri = () => {
               <div>caricamento...</div>
             )}
           </Col>
-          <Col xs={6} className="sticky-right-column">
+          <Col
+            xs={6}
+            //  className="sticky-right-column"
+          >
             {fotoSelezionata && playerSelezionato ? (
-              <div
-                style={{
-                  position: "sticky",
-                  top: 0,
-                  height: "100vh",
-                  border: "solid",
-                  padding: "0",
-                  zIndex: 1,
-                }}
-              >
-                <div className="colMembroSelezionato">
-                  <div className="pMembroSelezionato" style={{ paddingTop: "25%", marginRight: "20px" }}>
+              <>
+                <div className="divMembroSelezionato">
+                  <div className="pMembroSelezionato">
                     <h3>"{playerSelezionato.username}"</h3>
                     <h4>Nome: {playerSelezionato.nome}</h4>
                     <h4>Cognome: {playerSelezionato.cognome}</h4>
                     <h4>Input: {playerSelezionato.input}</h4>
                     <h4>Player con grandissime abilità meccaniche</h4>
                   </div>
-                  <img
-                    className="membroSelezionato"
-                    src={fotoSelezionata}
-                    alt="foto-selezionata"
-                    style={{ marginLeft: "20px" }}
-                  />
+                  <div className="fotoSelezionata">
+                    <img src={fotoSelezionata} alt="foto-selezionata" style={{ marginLeft: "20px" }} />
+                  </div>
                 </div>
-              </div>
+              </>
             ) : (
               <h4>Seleziona un talento</h4>
             )}

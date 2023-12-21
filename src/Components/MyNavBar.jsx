@@ -38,12 +38,10 @@ const MyNavbar = () => {
                     <div className="active">Home</div>
                   </Link>
                 </li>
-                {/* <li>
-                  <div>News</div>
-                </li> */}
+
                 <li>
                   <Link to={"/membri"}>
-                    <div>Membri</div>
+                    <div>Talenti</div>
                   </Link>
                 </li>
                 <li>
