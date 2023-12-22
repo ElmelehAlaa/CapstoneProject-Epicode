@@ -3,6 +3,8 @@ import { Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RegisterProfile } from "../redux/actions";
+import myImage from "../Assets/logoNome.png";
+import myBackground from "../Assets/Background.jpg";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const Register = () => {
     password: "",
     input: "",
   });
-  const [errorMessage, setErrorMessage] = useState(""); // Nuovo stato per il messaggio di errore
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,8 +42,15 @@ const Register = () => {
   };
 
   return (
-    <Container className="form-container mt-5">
-      <h2>Registrati</h2>
+    <Container
+      fluid
+      style={{ backgroundImage: `url(${myBackground})`, backgroundSize: "cover", height: "100vh" }}
+      className="form-container "
+    >
+      <div style={{ width: "450px", marginInline: "auto" }}>
+        <img src={myImage} alt="" />
+      </div>
+      <h2 style={{ fontSize: "45px", color: "orange", fontWeight: "700" }}>Registrati</h2>
       <form onSubmit={handleSubmit}>
         {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         <label>
@@ -77,7 +86,7 @@ const Register = () => {
         <label>
           input:
           <select name="input" value={formData.ruolo} onChange={handleChange} required>
-            <option value="">Seleziona il ruolo</option>
+            <option value="">Seleziona il tuo input</option>
             <option value="CONTROLLER">CONTROLLER</option>
             <option value="MK">MK</option>
           </select>

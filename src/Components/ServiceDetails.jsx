@@ -33,7 +33,13 @@ const ServiceDetails = () => {
   }, [params, navigate]);
 
   return (
-    <Container fluid>
+    <Container
+      fluid
+      style={{
+        backgroundImage: `url(${"https://static.vecteezy.com/system/resources/previews/004/771/779/original/abstract-geometric-white-and-blue-color-background-illustration-free-vector.jpg"})`,
+        backgroundSize: "cover",
+      }}
+    >
       {serviceDetails !== null ? (
         <>
           {serviceDetails.map((service, index) => (

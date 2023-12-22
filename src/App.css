@@ -83,7 +83,7 @@ nav {
 
 #navbar li a {
   text-decoration: none;
-  font-size: 1.3rem;
+  font-size: 18px;
   font-weight: 600;
   color: #fff;
   transition: 0.3s ease-in-out;
@@ -212,7 +212,7 @@ nav {
 
 #logoImg {
   transform: translateX(-250%);
-  transition: transform 2s ease-in-out;
+  transition: transform 1s ease-in-out;
 }
 
 #logoCol.show #logoImg {
@@ -226,9 +226,10 @@ nav {
 }
 
 .hServiceDetails {
-  font-size: 45px;
+  font-size: 75px;
   color: orange;
-  margin-top: 20px;
+  margin-top: 30px;
+  font-weight: 800;
 }
 .hHome {
   font-size: 80px;
@@ -239,6 +240,8 @@ nav {
 }
 .pServizi {
   font-size: 40px;
+  font-weight: 600;
+  background-color: #5c5f656c;
 }
 .bottoneHome {
   background-color: #f18c20;
@@ -339,7 +342,6 @@ form h2 {
 }
 
 form label {
-  display: block;
   margin-bottom: 8px;
   color: orange;
 }
