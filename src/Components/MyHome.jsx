@@ -76,10 +76,13 @@ const MyHome = () => {
         </Row>
         <Row>
           <Col xs={8} className="mx-auto ">
-            <h2 className="titleHome mb-0">HIGH SCORE ACADEMY</h2>
+            <h2 className="titleHome mb-0">HIGH SCORE ESPORTS ACADEMY</h2>
             <h2 className="mx-auto my-0">
               <FaLongArrowAltDown />
             </h2>
+            <Link to={"/servizi"}>
+              <Button className="bottoneHome">SCOPRI I SERVIZI</Button>
+            </Link>
           </Col>
         </Row>
         <AnimatedSection reverse>
@@ -101,9 +104,6 @@ const MyHome = () => {
               <p className="pHome">
                 La nostra missione è trasformare gli appassionati di videogiochi in veri e propri atleti.
               </p>
-              <Link to={"/servizi"}>
-                <Button className="bottoneHome">SCOPRI I SERVIZI</Button>
-              </Link>
             </Col>
           </Row>
         </AnimatedSection>

@@ -41,11 +41,11 @@ const MyServizi = () => {
             <>
               <Row className="mx-auto mt-4 justify-content-center">
                 {data.content.map((servizio, index) => (
-                  <Col key={index} xs={"12"} className="mt-5 myServizi">
+                  <Col key={index} xs={"4"} className="mt-5 myServizi">
                     <Link to={`/servizi/${servizio.id}`}>
                       <CustomCard
                         idServizio={servizio.id}
-                        heightImg="550px"
+                        heightImg="400px"
                         widthImg="100%"
                         backcolor={index % 2 === 0 ? "orange" : "rgb(8, 120, 190)"}
                         title={servizio.title}

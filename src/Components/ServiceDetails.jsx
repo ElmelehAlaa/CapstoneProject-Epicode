@@ -48,7 +48,7 @@ const ServiceDetails = () => {
               <ListService imageUrl={service.imageUrl} description={service.description} reverse={index % 2 === 1} />
             </div>
           ))}
-          <Button className="buttonPrenota" onClick={handlePrenotaClick}>
+          <Button style={{ backgroundColor: "red" }} className="buttonPrenota" onClick={handlePrenotaClick}>
             Prenota Ora il tuo servizio!
           </Button>
         </>

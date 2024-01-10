@@ -32,21 +32,21 @@ const MyNavbar = () => {
         {myData ? (
           <>
             <div>
-              <ul id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
+              <ul style={{ marginBottom: "0px" }} id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
                 <li>
                   <Link to={""}>
-                    <div className="active">Home</div>
+                    <div className="active">HOME</div>
                   </Link>
                 </li>
 
                 <li>
                   <Link to={"/membri"}>
-                    <div>Talenti</div>
+                    <div>TALENTI</div>
                   </Link>
                 </li>
                 <li>
                   <Link to={"/servizi"}>
-                    <div>Servizi</div>
+                    <div>SERVIZI</div>
                   </Link>
                 </li>
                 <li>

@@ -57,18 +57,21 @@ const PrenotazioneServizio = () => {
                 <Card.Img variant="top" src={servizioSelezionato.imgUrl} />
                 <Card.Body>
                   <Card.Title>{servizioSelezionato.title}</Card.Title>
-                  <Card.Text>{servizioSelezionato.description}</Card.Text>
+                  <Card.Text style={{ color: "black" }}>{servizioSelezionato.description}</Card.Text>
 
                   {servizioSelezionato.costo !== 0 ? (
-                    <Card.Text> Costo: 4{servizioSelezionato.costo}$</Card.Text>
+                    <Card.Text style={{ color: "black" }}> Costo: 4{servizioSelezionato.costo}$</Card.Text>
                   ) : (
-                    <Card.Text> Contattaci per il prezzo</Card.Text>
+                    <Card.Text style={{ color: "black" }}> Contattaci per il prezzo</Card.Text>
                   )}
 
-                  <Card.Text> Servizio: 1 mese di Coaching completo dai nostri Coach professionisti </Card.Text>
+                  <Card.Text style={{ color: "black" }}>
+                    {" "}
+                    Servizio: 1 mese di Coaching completo dai nostri Coach professionisti{" "}
+                  </Card.Text>
 
                   <Button onClick={handlePostPrenotazione} variant="primary">
-                    {servizioSelezionato.costo !== 0 ? "Purchase" : "Contattaci"}
+                    {servizioSelezionato.costo !== 0 ? "Prenota" : "Contattaci"}
                   </Button>
                 </Card.Body>
               </>
